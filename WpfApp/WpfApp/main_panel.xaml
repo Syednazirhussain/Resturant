@@ -1,0 +1,17 @@
+﻿<Window x:Class="WpfApp.main_panel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp"
+        mc:Ignorable="d"
+        Title="Stallyons Technology" Height="450" Width="800">
+    <Grid Loaded="Grid_Loaded">
+        <Button x:Name="logout" Content="Logout" HorizontalAlignment="Left" Margin="712,10,0,0" VerticalAlignment="Top" Width="70" Height="20" Click="logout_Click"/>
+        <Button x:Name="btn_order" Content="Orders" HorizontalAlignment="Left" Margin="137,105,0,0" VerticalAlignment="Top" Width="137" Height="67" FontSize="20"/>
+        <Button x:Name="btn_setting" Content="Setting" HorizontalAlignment="Left" Margin="301,105,0,0" VerticalAlignment="Top" Width="137" Height="67" FontSize="20" Click="btn_setting_Click"/>
+        <TextBlock x:Name="txt_userType" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20"/>
+        <Button x:Name="btn_setting_Copy" Content="Stock List" HorizontalAlignment="Left" Margin="477,105,0,0" VerticalAlignment="Top" Width="137" Height="67" FontSize="20"/>
+
+    </Grid>
+</Window>
