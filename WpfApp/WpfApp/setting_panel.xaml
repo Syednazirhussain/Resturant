@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp"
         mc:Ignorable="d"
-        Title="setting_panel" Height="450" Width="800">
+        Title="setting_panel" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid Loaded="Grid_Loaded">
         <TabControl TabStripPlacement="Top" Width="793" Height="419" HorizontalAlignment="Right">
 

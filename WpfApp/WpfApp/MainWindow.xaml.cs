@@ -37,8 +37,7 @@ namespace WpfApp
 
         private void renderUserType()
         {
-            MySqlConnection con;
-            con = this.DBCON();
+            MySqlConnection con = Models.DBConfiguration.DBCON();
             string query = "select * from user_roles";
             try
             {
@@ -61,11 +60,7 @@ namespace WpfApp
         }
         
 
-        private MySqlConnection DBCON()
-        {
-            MySqlConnection con = new MySqlConnection("server=localhost; user=root; password=''; database=restaurant");
-            return con;
-        }
+
 
         private void btn_login_Click(object sender, RoutedEventArgs e)
         {
@@ -73,7 +68,7 @@ namespace WpfApp
             string type = cbn_type.SelectedValue.ToString();
             string query = "select * from users where email = '" + txt_username.Text + "' and password = '" + txt_password.Password + "' and user_role_code = '" + type + "'  limit 1";
 
-            MySqlConnection con = this.DBCON();
+            MySqlConnection con = Models.DBConfiguration.DBCON();
             try
             {
                 con.Open();
@@ -110,8 +105,4 @@ namespace WpfApp
         public string Value { get { return _value; } set { _value = value; } }
         string _value;
     }
-
-    //dgv.ItemsSource = t1.DefaultView;
-    //dgv.AutoGenerateColumns = true;
-    //dgv.CanUserAddRows = false;
 }

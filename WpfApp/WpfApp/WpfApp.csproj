@@ -59,6 +59,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\DBConfiguration.cs" />
     <Compile Include="setting_panel.xaml.cs">
       <DependentUpon>setting_panel.xaml</DependentUpon>
     </Compile>
