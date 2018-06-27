@@ -36,10 +36,11 @@ namespace WpfApp
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
             dgv_users.ItemsSource = this.getAllUsers().DefaultView;
             dgv_users.AutoGenerateColumns = true;
             dgv_users.CanUserAddRows = false;
+
+            // check
         }
 
 
