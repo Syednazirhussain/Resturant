@@ -6,28 +6,9 @@
         xmlns:local="clr-namespace:WpfApp"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid Loaded="Grid_Loaded" Margin="0,0,2,-5">
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="203,130,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
-            <TextBlock.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.587"/>
-                    <TranslateTransform X="0.543" Y="-1.02"/>
-                </TransformGroup>
-            </TextBlock.RenderTransform>
-        </TextBlock>
-        <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="205,181,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" RenderTransformOrigin="0.846,4.484">
-            <TextBlock.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.587"/>
-                    <TranslateTransform X="-0.601" Y="-0.851"/>
-                </TransformGroup>
-            </TextBlock.RenderTransform>
-        </TextBlock>
-        <TextBox x:Name="txt_username" HorizontalAlignment="Left" Height="23" Margin="308,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="226" RenderTransformOrigin="0.5,0.5">
+    <Grid  Loaded="Grid_Loaded">
+
+        <TextBox x:Name="txt_username" HorizontalAlignment="Left" Height="39" Margin="400,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text=""  Width="341" RenderTransformOrigin="0.5,0.5" FontSize="24">
             <TextBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -37,18 +18,13 @@
                 </TransformGroup>
             </TextBox.RenderTransform>
         </TextBox>
-        <Button x:Name="btn_login" Content="Login" HorizontalAlignment="Left" Margin="313,228,0,0" VerticalAlignment="Top" Width="220" RenderTransformOrigin="-1.012,0.46" Click="btn_login_Click">
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.587"/>
-                    <TranslateTransform X="-0.568" Y="-1.201"/>
-                </TransformGroup>
-            </Button.RenderTransform>
-        </Button>
-        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="200,81,0,0" TextWrapping="Wrap" Text="User Type" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cbn_type" HorizontalAlignment="Left" Margin="307,75,0,0" VerticalAlignment="Top" Width="229"/>
-        <PasswordBox x:Name="txt_password" PasswordChar="*" HorizontalAlignment="Left" Margin="307,181,0,0" VerticalAlignment="Top" Width="229" Height="22"/>
+        <Button x:Name="button" Content="Login" HorizontalAlignment="Left" Margin="399,204,0,0" VerticalAlignment="Top" Width="341" Height="42" FontSize="24" Click="button_Click"/>
+        <PasswordBox x:Name="txt_password" HorizontalAlignment="Left" Margin="399,143,0,0" VerticalAlignment="Top" Width="341" Height="38" FontSize="24"/>
+        <Label x:Name="label" Content="Login ID" HorizontalAlignment="Left" Margin="291,86,0,0" VerticalAlignment="Top" Width="68" RenderTransformOrigin="0.853,0.923" Height="38" FontSize="22"/>
+        <Label x:Name="label_Copy" Content="Password" HorizontalAlignment="Left" Margin="291,143,0,0" VerticalAlignment="Top" Width="103" RenderTransformOrigin="0.853,0.923" Height="38" FontSize="22"/>
+
+        <Image Name="MyImg" Source="/component/image.jpg" Margin="66,86,531,173" Cursor="Hand"/>
+
+
     </Grid>
 </Window>

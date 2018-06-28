@@ -23,6 +23,8 @@ namespace WpfApp
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private string user_role;
         public MainWindow()
         {
             InitializeComponent();
@@ -30,24 +32,34 @@ namespace WpfApp
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            this.renderUserType();
             this.Title = "Stallyons Technology";
-            cbn_type.SelectedIndex = 0;
         }
 
-        private void renderUserType()
+
+        private void button_Click(object sender, RoutedEventArgs e)
         {
+
+            string query = "select * from users where email = '" + txt_username.Text + "' and password = '" + txt_password.Password + "' limit 1";
+
             MySqlConnection con = Models.DBConfiguration.DBCON();
-            string query = "select * from user_roles";
             try
             {
                 con.Open();
-                MySqlDataAdapter da = new MySqlDataAdapter(query, con);
-                DataSet ds = new DataSet();
-                da.Fill(ds, "user_roles");
-                cbn_type.ItemsSource = ds.Tables[0].DefaultView;
-                cbn_type.DisplayMemberPath = ds.Tables[0].Columns["name"].ToString();
-                cbn_type.SelectedValuePath = ds.Tables[0].Columns["code"].ToString();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                MySqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+
+                    dr.Read();
+                    this.user_role = dr.GetString("user_role_code");
+                    new main_panel(this.user_role).ShowDialog();
+                    this.Hide();
+
+                }
+                else
+                {
+                    MessageBox.Show("Invalid email or password");
+                }
             }
             catch (MySqlException ex)
             {
@@ -58,42 +70,10 @@ namespace WpfApp
                 con.Close();
             }
         }
-        
 
 
 
-        private void btn_login_Click(object sender, RoutedEventArgs e)
-        {
 
-            string type = cbn_type.SelectedValue.ToString();
-            string query = "select * from users where email = '" + txt_username.Text + "' and password = '" + txt_password.Password + "' and user_role_code = '" + type + "'  limit 1";
-
-            MySqlConnection con = Models.DBConfiguration.DBCON();
-            try
-            {
-                con.Open();
-                MySqlCommand cmd = new MySqlCommand(query, con);
-                MySqlDataReader dr = cmd.ExecuteReader();
-                if (dr.HasRows)
-                {
-                    new main_panel(type).ShowDialog();
-                    this.Hide();
-                }
-                else
-                {
-                    MessageBox.Show("Invalid email or password");
-                }
-            }
-            catch(MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                con.Close();
-            }
-
-        }
     }
 
     public class StringValue
