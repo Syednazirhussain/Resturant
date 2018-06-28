@@ -105,4 +105,6 @@ namespace WpfApp
         public string Value { get { return _value; } set { _value = value; } }
         string _value;
     }
+
+
 }

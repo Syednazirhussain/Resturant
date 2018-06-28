@@ -12,7 +12,7 @@
             <TabItem Header="Users">
                 <Grid>
                     <Label x:Name="lbl" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="116" Margin="42,24,0,0" Content="search by name" RenderTransformOrigin="0.5,0.933" FontSize="14"></Label>
-                    <TextBox x:Name="txt_searchByName" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" Margin="217,24,0,0" Cursor="" RenderTransformOrigin="1.1,0.826"/>
+                    <TextBox x:Name="txt_searchByName" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" Margin="217,24,0,0" Cursor="" RenderTransformOrigin="1.1,0.826" TextChanged="txt_searchByName_TextChanged"/>
                     <DataGrid x:Name="dgv_users" Height="322" Margin="6,0" VerticalAlignment="Bottom"/>
                 </Grid>
             </TabItem>

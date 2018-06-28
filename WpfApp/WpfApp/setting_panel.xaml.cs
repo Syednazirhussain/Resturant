@@ -40,8 +40,11 @@ namespace WpfApp
             dgv_users.AutoGenerateColumns = true;
             dgv_users.CanUserAddRows = false;
 
-            // check
+
         }
+
+
+
 
 
         private DataTable getAllUsers()
@@ -73,6 +76,11 @@ namespace WpfApp
             }
 
             return t1;
+        }
+
+        private void txt_searchByName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            lbl.Content = txt_searchByName.Text;
         }
     }
 }
