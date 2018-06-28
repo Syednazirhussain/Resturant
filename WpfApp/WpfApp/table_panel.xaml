@@ -11,16 +11,17 @@
             <TabItem Header="Floor">
                 <Grid>
                     <Label x:Name="lbl" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="116" Margin="12,10,0,0" Content="Floor Name" RenderTransformOrigin="0.5,0.933" FontSize="14"/>
-                    <TextBox x:Name="txt_floorName" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" Margin="133,10,0,0" Cursor="" RenderTransformOrigin="1.1,0.826" />
-                    <Button x:Name="btn_addFloor" Content="ADD" Margin="221,47,426,209" RenderTransformOrigin="1.192,0.647" Click="btn_addFloor_Click" />
+                    <TextBox x:Name="txt_floorName" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" Margin="133,10,0,0" Cursor="" RenderTransformOrigin="1.1,0.826" FontSize="20" />
+                    <Button x:Name="btn_addFloor" Content="ADD" Margin="221,47,426,198" RenderTransformOrigin="1.192,0.647" Click="btn_addFloor_Click" />
 
 
-                    <TextBox x:Name="txt_searchFloor" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" Margin="547,10,0,0"  RenderTransformOrigin="1.1,0.826" TextChanged="floorname_TextChanged"/>
+                    <TextBox x:Name="txt_searchFloor" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" Margin="547,10,0,0"  RenderTransformOrigin="1.1,0.826" TextChanged="floorname_TextChanged" FontSize="20"/>
                     <Label x:Name="lbl_Copy" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="116" Margin="417,10,0,0" Content="Search Floor" RenderTransformOrigin="0.5,0.933" FontSize="14" />
 
 
 
-                    <DataGrid x:Name="dgv_floors" Height="193" Margin="12,0" VerticalAlignment="Bottom"/>
+                    <DataGrid x:Name="dgv_floors" Height="193" Margin="12,0" VerticalAlignment="Bottom" SelectionChanged="dgv_floors_SelectionChanged"/>
+                    <Button x:Name="btn_delete" Content="DELETE" Margin="133,47,514,198" RenderTransformOrigin="1.192,0.647" Click="btn_deleteFloor_Click" />
 
                 </Grid>
             </TabItem>
