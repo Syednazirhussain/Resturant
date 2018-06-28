@@ -35,6 +35,12 @@ namespace WpfApp
             this.Title = "Stallyons Technology";
         }
 
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            Application.Current.Shutdown();
+        }
+
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
@@ -52,8 +58,11 @@ namespace WpfApp
 
                     dr.Read();
                     this.user_role = dr.GetString("user_role_code");
-                    new main_panel(this.user_role).ShowDialog();
+
+                    main_panel main_Panel = new main_panel(this.user_role);
+                    main_Panel.Owner = this;
                     this.Hide();
+                    main_Panel.Show();
 
                 }
                 else

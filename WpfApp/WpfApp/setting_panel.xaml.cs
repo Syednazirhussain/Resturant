@@ -32,6 +32,18 @@ namespace WpfApp
             user_type = value;
         }
 
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            Application.Current.Shutdown();
+        }
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.Title = "Users";
+            login_type.Content = String.Format("Authenticated as {0}", this.user_type);
+        }
+
         private void get_users(object sender, RoutedEventArgs e)
         {
             dgv_users.ItemsSource = this.getAllUsers().DefaultView;
@@ -198,6 +210,16 @@ namespace WpfApp
 
             }
         }
+
+        private void btn_main_menu_Click(object sender, RoutedEventArgs e)
+        {
+            main_panel main_Panel = new main_panel(this.user_type);
+            main_Panel.Owner = this;
+            this.Hide();
+            main_Panel.Show();
+        }
+
+
 
         private void nullInputField()
         {

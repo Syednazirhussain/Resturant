@@ -26,29 +26,47 @@ namespace WpfApp
             user_type = value;
         }
 
-        private void logout_Click(object sender, RoutedEventArgs e)
+        protected override void OnClosed(EventArgs e)
         {
-
-            this.Hide();
-            MainWindow login_window = new MainWindow();
-            login_window.Show();
+            base.OnClosed(e);
+            Application.Current.Shutdown();
         }
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             this.Title = "Stallyons Technology";
-            txt_userType.Text = String.Format("Authenticated as {0}",user_type);
+            login_type.Content = String.Format("Authenticated as {0}",user_type);
             if (user_type.Equals("sales_person"))
             {
-                btn_setting.IsEnabled = false;
+                btn_settings.IsEnabled = false;
             }
         }
 
-        private void btn_setting_Click(object sender, RoutedEventArgs e)
+        
+        private void logout_Click_1(object sender, RoutedEventArgs e)
         {
-            new setting_panel(user_type).ShowDialog();
-            this.Hide();
 
+            MainWindow login_window = new MainWindow();
+            login_window.Owner = this;
+            this.Hide();
+            login_window.Show();
+            //#FF062693
+        }
+
+        private void btn_users_Click(object sender, RoutedEventArgs e)
+        {
+            setting_panel setting_Panel = new setting_panel(this.user_type);
+            setting_Panel.Owner = this;
+            this.Hide();
+            setting_Panel.Show();
+        }
+
+        private void btn_tables_Click(object sender, RoutedEventArgs e)
+        {
+            table_panel table_Panel = new table_panel(this.user_type);
+            table_Panel.Owner = this;
+            this.Hide();
+            table_Panel.Show();
         }
     }
 }

@@ -63,6 +63,9 @@
     <Compile Include="setting_panel.xaml.cs">
       <DependentUpon>setting_panel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="table_panel.xaml.cs">
+      <DependentUpon>table_panel.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -80,6 +83,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="setting_panel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="table_panel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -115,6 +122,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="component\image.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="component\logout.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

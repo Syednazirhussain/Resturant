@@ -7,11 +7,24 @@
         mc:Ignorable="d"
         Title="Stallyons Technology" Height="450" Width="800">
     <Grid Loaded="Grid_Loaded">
-        <Button x:Name="logout" Content="Logout" HorizontalAlignment="Left" Margin="712,10,0,0" VerticalAlignment="Top" Width="70" Height="20" Click="logout_Click"/>
+
+
+        <Label x:Name="login_type" Content="" HorizontalAlignment="Left" Margin="28,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.342,0.846" Height="33" Width="313" FontSize="20" FontWeight="Bold" FontStyle="Italic" Foreground="#FF062693"/>
+
         <Button x:Name="btn_order" Content="Orders" HorizontalAlignment="Left" Margin="137,105,0,0" VerticalAlignment="Top" Width="137" Height="67" FontSize="20"/>
-        <Button x:Name="btn_setting" Content="Setting" HorizontalAlignment="Left" Margin="301,105,0,0" VerticalAlignment="Top" Width="137" Height="67" FontSize="20" Click="btn_setting_Click"/>
-        <TextBlock x:Name="txt_userType" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20"/>
-        <Button x:Name="btn_setting_Copy" Content="Stock List" HorizontalAlignment="Left" Margin="477,105,0,0" VerticalAlignment="Top" Width="137" Height="67" FontSize="20"/>
+        <Button x:Name="btn_kitchen" Content="Kitchen" HorizontalAlignment="Left" Margin="311,105,0,0" VerticalAlignment="Top" Width="137" Height="67" FontSize="20"/>
+        <Button x:Name="btn_items" Content="Items" HorizontalAlignment="Left" Margin="477,105,0,0" VerticalAlignment="Top" Width="137" Height="67" FontSize="20"/>
+        <Button x:Name="btn_reports" Content="Reports" HorizontalAlignment="Left" Margin="137,190,0,0" VerticalAlignment="Top" Width="137" Height="67" FontSize="20"/>
+        <Button x:Name="btn_customers" Content="Customers" HorizontalAlignment="Left" Margin="311,190,0,0" VerticalAlignment="Top" Width="137" Height="67" FontSize="20"/>
+        <Button x:Name="btn_tables" Content="Tables" HorizontalAlignment="Left" Margin="477,190,0,0" VerticalAlignment="Top" Width="137" Height="67" FontSize="20" Click="btn_tables_Click"/>
+        <Button x:Name="btn_users" Content="Users" HorizontalAlignment="Left" Margin="137,278,0,0" VerticalAlignment="Top" Width="137" Height="67" FontSize="20" Click="btn_users_Click"/>
+        <Button x:Name="btn_settings" Content="Settings" HorizontalAlignment="Left" Margin="311,278,0,0" VerticalAlignment="Top" Width="137" Height="67" FontSize="20"/>
+        <Button x:Name="logout" HorizontalAlignment="Left" Width="137" Height="67" Margin="477,278,178,76" Click="logout_Click_1">
+            <StackPanel Orientation="Vertical">
+                <Image Source="/component/logout.png" Height="37" Width="40"/>
+                <Label Padding="0" Content="Logout"/>
+            </StackPanel>
+        </Button>
 
     </Grid>
 </Window>

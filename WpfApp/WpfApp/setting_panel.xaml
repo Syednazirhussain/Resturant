@@ -6,13 +6,14 @@
         xmlns:local="clr-namespace:WpfApp"
         mc:Ignorable="d"
         Title="setting_panel" Height="450" Width="800">
-    <Grid>
-        <TabControl TabStripPlacement="Top" Width="793" Height="419" HorizontalAlignment="Right">
+    <Grid x:Name="main_grid" Loaded="Grid_Loaded">
+        <Label x:Name="login_type" Content="" HorizontalAlignment="Left" Margin="28,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.342,0.846" Height="33" Width="313" FontSize="20" FontWeight="Bold" FontStyle="Italic" Foreground="#FF062693"/>
+        <TabControl TabStripPlacement="Top" Width="727" HorizontalAlignment="Right" Margin="0,55,37,77">
             <TabItem Header="Users">
                 <Grid Loaded="get_users">
-                    <Label x:Name="lbl" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="116" Margin="12,24,0,0" Content="search by name" RenderTransformOrigin="0.5,0.933" FontSize="14" Grid.ColumnSpan="3" Grid.Column="1"></Label>
+                    <Label x:Name="lbl" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="116" Margin="12,24,0,0" Content="search by name" RenderTransformOrigin="0.5,0.933" FontSize="14"/>
                     <TextBox x:Name="txt_searchByName" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" Margin="123,24,0,0" Cursor="" RenderTransformOrigin="1.1,0.826" TextChanged="txt_searchByName_TextChanged" Grid.Column="3"/>
-                    <DataGrid x:Name="dgv_users" Height="322" Margin="0,0,6,0" VerticalAlignment="Bottom" Grid.ColumnSpan="3" Grid.Column="1"/>
+                    <DataGrid x:Name="dgv_users" Height="160" Margin="12,0,10,10" VerticalAlignment="Bottom"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Add New" Height="22" VerticalAlignment="Bottom">
@@ -38,5 +39,6 @@
                 </Grid>
             </TabItem>
         </TabControl>
+        <Button x:Name="btn_main_menu" Content="Back" HorizontalAlignment="Left" Margin="680,374,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.58,1.1" FontSize="14" Click="btn_main_menu_Click"/>
     </Grid>
 </Window>

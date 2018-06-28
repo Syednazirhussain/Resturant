@@ -20,3 +20,5 @@ D:\C-Sharp\WpfApp\WpfApp\obj\Debug\main_panel.g.cs
 D:\C-Sharp\WpfApp\WpfApp\obj\Debug\main_panel.baml
 D:\C-Sharp\WpfApp\WpfApp\obj\Debug\setting_panel.g.cs
 D:\C-Sharp\WpfApp\WpfApp\obj\Debug\setting_panel.baml
+D:\C-Sharp\WpfApp\WpfApp\obj\Debug\table_panel.g.cs
+D:\C-Sharp\WpfApp\WpfApp\obj\Debug\table_panel.baml
