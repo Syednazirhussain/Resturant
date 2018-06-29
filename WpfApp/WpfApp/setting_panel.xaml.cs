@@ -46,10 +46,9 @@ namespace WpfApp
 
         private void get_users(object sender, RoutedEventArgs e)
         {
-            dgv_users.ItemsSource = this.getAllUsers().DefaultView;
-            dgv_users.AutoGenerateColumns = true;
-            dgv_users.CanUserAddRows = false;
+            this.updateUserGridView(this.getAllUsers());
         }
+
         private DataTable getAllUsers()
         {
   
@@ -79,6 +78,55 @@ namespace WpfApp
             }
 
             return t1;
+        }
+
+        private void updateUserGridView(DataTable dataTable)
+        {
+            DataTable floorTable = dataTable;
+
+            floorTable.Columns["id"].ColumnName = "ID";
+            floorTable.Columns["name"].ColumnName = "Name";
+            floorTable.Columns["email"].ColumnName = "Email";
+            floorTable.Columns["user_status_id"].ColumnName = "Status";
+            floorTable.Columns["created_at"].ColumnName = "Created At";
+
+            DataView dv = new DataView(floorTable);
+            DataTable dt = dv.ToTable(true, "ID", "Name", "Email", "Status", "Created At");
+
+            DataTable dtCloned = dt.Clone();
+            dtCloned.Columns["Status"].DataType = typeof(string);
+            dtCloned.Columns["Created At"].DataType = typeof(string);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                dtCloned.ImportRow(row);
+            }
+
+            if (dtCloned.Rows.Count > 0)
+            {
+                DataColumn statusColumn = dtCloned.Columns["Status"];
+                DataColumn createdAtColumn = dtCloned.Columns["Created At"];
+
+                foreach (DataRow row in dtCloned.Rows)
+                {
+
+                    if(row[statusColumn].Equals("1"))
+                    {
+                         row[statusColumn] = "Active";
+                    }
+                    else
+                    {
+                        row[statusColumn] = "DeActive";
+                    }
+
+                    DateTime enteredDate = DateTime.Parse(row[createdAtColumn].ToString());
+                    row[createdAtColumn] = enteredDate.ToString("F");
+
+                }
+            }
+
+            dgv_users.ItemsSource = dtCloned.DefaultView;
+            dgv_users.CanUserAddRows = false;
         }
         private void txt_searchByName_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -117,9 +165,7 @@ namespace WpfApp
                 con.Close();
             }
 
-            dgv_users.ItemsSource = t1.DefaultView;
-            dgv_users.AutoGenerateColumns = true;
-            dgv_users.CanUserAddRows = false;
+            this.updateUserGridView(t1);
         }
 
         private void renderUserType()
@@ -178,8 +224,9 @@ namespace WpfApp
                 {
                     user_status_id = 0;
                 }
+                string created_at = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 MySqlConnection con = Models.DBConfiguration.DBCON();
-                string query = "insert into users (name,email,password,user_role_code,user_status_id) values ('"+this.name+ "','" + this.email + "','" + this.password + "','" + this.type + "','" + user_status_id + "' )";
+                string query = "insert into users (name,email,password,user_role_code,user_status_id,created_at) values ('" + this.name+ "','" + this.email + "','" + this.password + "','" + this.type + "','" + user_status_id + "','"+ created_at + "' )";
                 try
                 {
                     con.Open();
