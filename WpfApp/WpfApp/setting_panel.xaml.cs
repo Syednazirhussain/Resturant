@@ -24,7 +24,7 @@ namespace WpfApp
         string user_type;
         MySqlConnection con;
 
-        private string name, email, status, type, password, confirm_passowrd;
+        private string name, email, username , status, type, password, confirm_passowrd;
 
         public setting_panel(string value)
         {
@@ -192,13 +192,22 @@ namespace WpfApp
             }
         }
 
+        private void btn_main_menu_Click(object sender, RoutedEventArgs e)
+        {
+            main_panel main_Panel = new main_panel(this.user_type);
+            main_Panel.Owner = this;
+            this.Hide();
+            main_Panel.Show();
+        }
+
         private void btn_addUser_Click(object sender, RoutedEventArgs e)
         {
             bool isError = true;
             int errorCount = 0;
             int user_status_id;
 
-            this.name = txt_username.Text.ToString();
+            this.name = txt_name.Text.ToString();
+            this.username = txt_username.Text.ToString();
             this.email = txt_email.Text.ToString();
             this.type = cb_userType.SelectedValue.ToString();
             this.password = txt_password.Password;
@@ -226,7 +235,10 @@ namespace WpfApp
                 }
                 string created_at = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 MySqlConnection con = Models.DBConfiguration.DBCON();
-                string query = "insert into users (name,email,password,user_role_code,user_status_id,created_at) values ('" + this.name+ "','" + this.email + "','" + this.password + "','" + this.type + "','" + user_status_id + "','"+ created_at + "' )";
+
+                String HashPassord = this.encryptPassword(this.password);
+
+                string query = "insert into users (name,username,email,password,user_role_code,user_status_id,created_at) values ('" + this.name+ "','"+this.username+"','" + this.email + "','" + HashPassord + "','" + this.type + "','" + user_status_id + "','"+ created_at + "' )";
                 try
                 {
                     con.Open();
@@ -258,18 +270,20 @@ namespace WpfApp
             }
         }
 
-        private void btn_main_menu_Click(object sender, RoutedEventArgs e)
+   
+
+        private String encryptPassword(string password)
         {
-            main_panel main_Panel = new main_panel(this.user_type);
-            main_Panel.Owner = this;
-            this.Hide();
-            main_Panel.Show();
+            byte[] data = System.Text.Encoding.ASCII.GetBytes(password);
+            data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
+            String hash = System.Text.Encoding.ASCII.GetString(data);
+            return hash;
         }
-
-
+        
 
         private void nullInputField()
         {
+            txt_name.Text = "";
             txt_username.Text = "";
             txt_email.Text = "";
             txt_password.Password = "";
@@ -290,11 +304,25 @@ namespace WpfApp
                 errorCount++;
                 lbl_name.Content = "Name is required";
             }
-            
+
+            if (this.username.Length == 0)
+            {
+                errorCount++;
+                lbl_username.Content = "Username is required";
+            }
+
             if (this.password.Length == 0)
             {
                 errorCount++;
                 lbl_password.Content = "Password is required";
+            }
+            else
+            {
+                if(this.password.Length > 6)
+                {
+                    errorCount++;
+                    lbl_password.Content = "Password must be 1 to 6 character long";
+                }
             }
 
 

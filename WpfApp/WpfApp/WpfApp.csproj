@@ -126,5 +126,8 @@
   <ItemGroup>
     <Resource Include="component\logout.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="component\remove.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -69,11 +69,8 @@ namespace WpfApp
 
                         if (result > 0)
                         {
-                            txt_floorName.Text = "";
+                            this.undoFloorUpdateOperation();
                             MessageBox.Show("Record has been deleted");
-                            this.IsEditFloor = 0;
-                            btn_addFloor.Content = "ADD";
-                            btn_delete.Visibility = Visibility.Hidden;
                             this.updateGridView();
                         }
                         else
@@ -152,11 +149,8 @@ namespace WpfApp
 
                     if (result > 0)
                     {
-                        txt_floorName.Text = "";
-                        btn_delete.Visibility = Visibility.Hidden;
+                        this.undoFloorUpdateOperation();
                         MessageBox.Show("Record has been updated");
-                        this.IsEditFloor = 0;
-                        btn_addFloor.Content = "ADD";
                         this.updateGridView();
                     }
                     else
@@ -174,6 +168,20 @@ namespace WpfApp
                 }
             }
  
+        }
+
+        private void btn_cancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.undoFloorUpdateOperation();
+        }
+
+        private void undoFloorUpdateOperation()
+        {
+            IsEditFloor = 0;
+            txt_floorName.Text = "";
+            btn_delete.Visibility = Visibility.Hidden;
+            btn_cancel.Visibility = Visibility.Hidden;
+            btn_addFloor.Content = "ADD";
         }
 
         private void floorname_TextChanged(object sender, RoutedEventArgs e)
@@ -286,6 +294,7 @@ namespace WpfApp
             this.Title = "Tables";
             login_type.Content = String.Format("Authenticated as {0}",this.user_type);
             btn_delete.Visibility = Visibility.Hidden;
+            btn_cancel.Visibility = Visibility.Hidden;
             this.updateGridView();
         }
 
@@ -299,6 +308,7 @@ namespace WpfApp
                 this.IsEditFloor = 1;
                 btn_addFloor.Content = "UPDATE";
                 btn_delete.Visibility = Visibility.Visible;
+                btn_cancel.Visibility = Visibility.Visible;
                 txt_floorName.Text = selected_row["Floor Names"].ToString();
                 this.floorId = int.Parse(selected_row["ID"].ToString());
             }

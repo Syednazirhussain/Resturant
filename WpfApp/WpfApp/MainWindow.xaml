@@ -18,10 +18,10 @@
                 </TransformGroup>
             </TextBox.RenderTransform>
         </TextBox>
-        <Button x:Name="button" Content="Login" HorizontalAlignment="Left" Margin="399,204,0,0" VerticalAlignment="Top" Width="341" Height="42" FontSize="24" Click="button_Click"/>
+        <Button x:Name="button" Content="Login" HorizontalAlignment="Left" Margin="399,204,0,0" VerticalAlignment="Top" Width="341" Height="42" FontSize="24" Click="btnLogin_Click"/>
         <PasswordBox x:Name="txt_password" HorizontalAlignment="Left" Margin="399,143,0,0" VerticalAlignment="Top" Width="341" Height="38" FontSize="24"/>
-        <Label x:Name="label" Content="Login ID" HorizontalAlignment="Left" Margin="291,86,0,0" VerticalAlignment="Top" Width="68" RenderTransformOrigin="0.853,0.923" Height="38" FontSize="22"/>
-        <Label x:Name="label_Copy" Content="Password" HorizontalAlignment="Left" Margin="291,143,0,0" VerticalAlignment="Top" Width="103" RenderTransformOrigin="0.853,0.923" Height="38" FontSize="22"/>
+        <Label x:Name="label" Content="Username" HorizontalAlignment="Left" Margin="266,86,0,0" VerticalAlignment="Top" Width="114" RenderTransformOrigin="0.853,0.923" Height="38" FontSize="22"/>
+        <Label x:Name="label_Copy" Content="Password" HorizontalAlignment="Left" Margin="266,143,0,0" VerticalAlignment="Top" Width="103" RenderTransformOrigin="0.853,0.923" Height="38" FontSize="22"/>
 
         <Image Name="MyImg" Source="/component/image.jpg" Margin="66,86,531,173" Cursor="Hand"/>
 

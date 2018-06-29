@@ -13,7 +13,9 @@
                     <Label x:Name="lbl" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="116" Margin="12,10,0,0" Content="Floor Name" RenderTransformOrigin="0.5,0.933" FontSize="14"/>
                     <TextBox x:Name="txt_floorName" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" Margin="133,10,0,0" Cursor="" RenderTransformOrigin="1.1,0.826" FontSize="20" />
                     <Button x:Name="btn_addFloor" Content="ADD" Margin="221,47,426,198" RenderTransformOrigin="1.192,0.647" Click="btn_addFloor_Click" />
-
+                    <Button x:Name="btn_cancel" Click="btn_cancel_Click" ToolTip="Add" Margin="311,47,378,198">
+                        <Image Source="component/remove.png" Height="20" Width="23"/>
+                    </Button>
 
                     <TextBox x:Name="txt_searchFloor" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" Margin="547,10,0,0"  RenderTransformOrigin="1.1,0.826" TextChanged="floorname_TextChanged" FontSize="20"/>
                     <Label x:Name="lbl_Copy" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="116" Margin="417,10,0,0" Content="Search Floor" RenderTransformOrigin="0.5,0.933" FontSize="14" />

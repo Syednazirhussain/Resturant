@@ -41,11 +41,21 @@ namespace WpfApp
             Application.Current.Shutdown();
         }
 
+        private String encryptPassword(string password)
+        {
+            byte[] data = System.Text.Encoding.ASCII.GetBytes(password);
+            data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
+            String hash = System.Text.Encoding.ASCII.GetString(data);
+            return hash;
+        }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
 
-            string query = "select * from users where email = '" + txt_username.Text + "' and password = '" + txt_password.Password + "' limit 1";
+            String password = this.encryptPassword(txt_password.Password.ToString());
+
+            string query = "select * from users where username = '" + txt_username.Text + "' and password = '" + password + "' limit 1";
 
             MySqlConnection con = Models.DBConfiguration.DBCON();
             try
@@ -81,18 +91,6 @@ namespace WpfApp
         }
 
 
-
-
-    }
-
-    public class StringValue
-    {
-        public StringValue(string s)
-        {
-            _value = s;
-        }
-        public string Value { get { return _value; } set { _value = value; } }
-        string _value;
     }
 
 
