@@ -129,5 +129,8 @@
   <ItemGroup>
     <Resource Include="component\remove.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="component\power.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

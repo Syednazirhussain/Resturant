@@ -333,6 +333,7 @@ namespace WpfApp
 
         private void undoTableZoneUpdate()
         {
+            this.isEditFloorZone = 0;
             txt_zonename.Text = "";
             txt_numoftable.Text = "";
             btn_addTableZone.Content = "ADD";
@@ -450,11 +451,45 @@ namespace WpfApp
             }
         }
 
- 
-
         private void btn_deleteTableZone_Click(object sender, RoutedEventArgs e)
         {
+            if (MessageBox.Show("Are you sure ?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            {
+                btn_deleteTableZone.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                string query = "delete from table_zones where id = '" + this.tableZoneId + "'";
+                try
+                {
+                    con.Open();
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.CommandText = query;
+                    cmd.Connection = con;
 
+                    int result = cmd.ExecuteNonQuery();
+
+                    if (result > 0)
+                    {
+                        this.undoTableZoneUpdate();
+                        MessageBox.Show("Record has been deleted");
+                        this.updateTableZoneGridView(this.selectRecord("select table_zones.id , floors.name , table_zones.name , table_zones.num_tables from table_zones inner join floors where table_zones.floor_id = floors.id"));
+                    }
+                    else
+                    {
+                        MessageBox.Show("There is some problem while inserting records");
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    con.Close();
+                }
+
+            }
 
         }
 

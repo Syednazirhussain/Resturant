@@ -121,7 +121,10 @@ namespace WpfApp
             }
         }
 
-
+        private void btn_tbZoneCancel_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 
 

@@ -16,15 +16,10 @@
                     <Button x:Name="btn_cancel" Click="btn_cancel_Click" ToolTip="Add" Margin="311,47,378,198">
                         <Image Source="component/remove.png" Height="20" Width="23"/>
                     </Button>
-
                     <TextBox x:Name="txt_searchFloor" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" Margin="547,10,0,0"  RenderTransformOrigin="1.1,0.826" TextChanged="floorname_TextChanged" FontSize="20"/>
                     <Label x:Name="lbl_Copy" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="116" Margin="417,10,0,0" Content="Search Floor" RenderTransformOrigin="0.5,0.933" FontSize="14" />
-
-
-
                     <DataGrid x:Name="dgv_floors" Height="193" Margin="12,0" VerticalAlignment="Bottom" SelectionChanged="dgv_floors_SelectionChanged"/>
                     <Button x:Name="btn_delete" Content="DELETE" Margin="133,47,514,198" RenderTransformOrigin="1.192,0.647" Click="btn_deleteFloor_Click" />
-
                 </Grid>
             </TabItem>
             <TabItem Header="Table Zones" Height="22" VerticalAlignment="Bottom">
