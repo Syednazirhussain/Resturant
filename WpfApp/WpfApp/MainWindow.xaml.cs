@@ -53,40 +53,71 @@ namespace WpfApp
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
 
-            String password = this.encryptPassword(txt_password.Password.ToString());
-
-            string query = "select * from users where username = '" + txt_username.Text + "' and password = '" + password + "' limit 1";
-
-            MySqlConnection con = Models.DBConfiguration.DBCON();
-            try
+            if(this.checkField(txt_username.Text.ToString(), txt_password.Password.ToString()))
             {
-                con.Open();
-                MySqlCommand cmd = new MySqlCommand(query, con);
-                MySqlDataReader dr = cmd.ExecuteReader();
-                if (dr.HasRows)
+                String password = this.encryptPassword(txt_password.Password.ToString());
+
+                string query = "select * from users where username = '" + txt_username.Text + "' and password = '" + password + "' limit 1";
+
+                MySqlConnection con = Models.DBConfiguration.DBCON();
+                try
                 {
+                    con.Open();
+                    MySqlCommand cmd = new MySqlCommand(query, con);
+                    MySqlDataReader dr = cmd.ExecuteReader();
+                    if (dr.HasRows)
+                    {
 
-                    dr.Read();
-                    this.user_role = dr.GetString("user_role_code");
+                        dr.Read();
+                        this.user_role = dr.GetString("user_role_code");
 
-                    main_panel main_Panel = new main_panel(this.user_role);
-                    main_Panel.Owner = this;
-                    this.Hide();
-                    main_Panel.Show();
+                        main_panel main_Panel = new main_panel(this.user_role);
+                        main_Panel.Owner = this;
+                        this.Hide();
+                        main_Panel.Show();
 
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid email or password");
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    con.Close();
+                }
+            }
+
+        }
+
+
+        private bool checkField(string username , string password)
+        {
+            if(username.Length == 0 && password.Length == 0)
+            {
+                MessageBox.Show("Please enter username and password");
+                return false;
+            }
+            else
+            {
+                if(username.Length == 0)
+                {
+                    MessageBox.Show("Please enter username");
+                    return false;
+                }
+                else if(password.Length == 0)
+                {
+                    MessageBox.Show("Please enter password");
+                    return false;
                 }
                 else
                 {
-                    MessageBox.Show("Invalid email or password");
+                    return true;
                 }
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                con.Close();
             }
         }
 

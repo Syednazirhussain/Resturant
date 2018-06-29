@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="table_panel" Height="450" Width="800">
     <Grid x:Name="main_grid" Loaded="Grid_Loaded">
-        <TabControl TabStripPlacement="Top" Width="727" HorizontalAlignment="Right" Margin="0,57,37,50">
+        <TabControl TabStripPlacement="Top" Width="727" HorizontalAlignment="Right" Margin="0,57,37,38">
             <TabItem Header="Floor">
                 <Grid>
                     <Label x:Name="lbl" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="116" Margin="12,10,0,0" Content="Floor Name" RenderTransformOrigin="0.5,0.933" FontSize="14"/>
@@ -28,13 +28,28 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Table Zones" Height="22" VerticalAlignment="Bottom">
-                <Grid>
-
+                <Grid Loaded="Grid_TableZoneLoaded">
+                    <Label x:Name="label" Content="Select Floor" Margin="5,10,597,252" FontSize="14"/>
+                    <ComboBox x:Name="cb_floor" HorizontalAlignment="Left" Margin="129,10,0,0" VerticalAlignment="Top" Width="178" Height="32" FontSize="20"/>
+                    <TextBox x:Name="txt_zonename" HorizontalAlignment="Left" Height="32" Margin="129,47,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="178" FontSize="20"/>
+                    <Label x:Name="label_Copy" Content="Table Zone Name" Margin="0,47,597,215" FontSize="14"/>
+                    <Button x:Name="btn_addTableZone" Content="ADD" Margin="233,134,414,121" RenderTransformOrigin="1.192,0.647" Click="btn_addTableZone_Click"  />
+                    <DataGrid x:Name="dgv_tableZone" HorizontalAlignment="Left" Height="106" Margin="10,178,0,0" VerticalAlignment="Top" Width="701" SelectionChanged="dgv_tableZone_SelectionChanged"/>
+                    <Label x:Name="label_Copy2" Content="Search Table Zone" Margin="337,18,260,232" FontSize="14"/>
+                    <TextBox x:Name="txt_searchTableZone" HorizontalAlignment="Left" Height="32" Margin="466,18,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="178" FontSize="20" TextChanged="txt_searchTableZone_TextChanged"/>
+                    <Button x:Name="btn_deleteTableZone" Content="Delete" Margin="129,134,518,121" RenderTransformOrigin="1.192,0.647" Click="btn_deleteTableZone_Click" />
+                    <TextBox x:Name="txt_numoftable" HorizontalAlignment="Left" Height="32" Margin="129,84,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="178" FontSize="20"/>
+                    <Label x:Name="label_Copy3" Content="Num Of Tables" Margin="0,84,597,178" FontSize="14"/>
+                    <Button x:Name="btn_tbZoneCancel" Margin="322,134,367,121" Click="btn_tbZoneCancel_Click">
+                        <Image Source="component/remove.png" Height="20" Width="23"/>
+                    </Button>
                 </Grid>
             </TabItem>
 
+
+
         </TabControl>
-        <Button x:Name="btn_main_menu" Content="Back" HorizontalAlignment="Left" Margin="680,374,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.58,1.1" FontSize="14" Click="btn_main_menu_Click"/>
+        <Button x:Name="btn_main_menu" Content="Back" HorizontalAlignment="Left" Margin="680,386,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.58,1.1" FontSize="14" Click="btn_main_menu_Click"/>
         <Label x:Name="login_type" Content="" HorizontalAlignment="Left" Margin="28,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.342,0.846" Height="33" Width="313" FontSize="20" FontWeight="Bold" FontStyle="Italic" Foreground="#FF062693"/>
     </Grid>
 </Window>
